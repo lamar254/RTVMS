@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REGISTER</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#eef0f3;
+      --card:#ffffff;
+      --muted:#9aa1ab;
+      --accent:#0ea5a4;
+      --accent-2:#2563eb;
+      --danger:#ef4444;
+      --glass: rgba(255,255,255,0.6);
+      --shadow: 0 8px 24px rgba(22,28,37,0.08);
+      --radius:14px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Inter", sans-serif;
+        background: #f4f9f9;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .topbar {
+        width: 100%;
+        height: 60px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        display: flex;
+        align-items: center;
+        padding: 0 25px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    }
+
+    .topbar .logo {
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+
+    .form-wrapper {
+        width: 100%;
+        max-width: 400px;
+        margin-top: 60px;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .card {
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 40px 40px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .card h2 {
+        color: #0f766e;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .input-group {
+        width: 100%;
+        margin-bottom: 18px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .input-group label {
+        font-size: 13px;
+        font-weight: 500;
+        color: #0b3d3a;
+        margin-bottom: 6px;
+    }
+
+    .input-group input, .input-group select {
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1.5px solid #dce7e7;
+        font-size: 14px;
+        transition: 0.2s;
+        background: #f9fefc;
+        color: #0b3d3a;
+    }
+
+    .input-group input:focus, .input-group select:focus {
+        outline: none;
+        border-color: #0f766e;
+        background: #ffffff;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        color: #ffffff;
+        border: none;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.2s ease;
+    }
+
+    button:hover {
+        background: #0d5e28;
+    }
+
+    .redirect a {
+        color: #0f766e;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .redirect a:hover {
+        text-decoration: underline;
+    }
+
+    @media screen and (max-width: 420px) {
+        .card {
+            padding: 30px 20px;
+        }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="logo">RTVMS</div>
+  </div>
+
+  <div class="form-wrapper">
+    <div class="card">
+      <h2>REGISTRATION PORTAL</h2>
+      <form id="registerForm">
+        <div class="input-group">
+          <label for="workID">Work ID / Badge No</label>
+          <input type="text" id="workID" placeholder="Enter Work ID" required>
+        </div>
+        <div class="input-group">
+          <label for="nationalID">National ID</label>
+          <input type="text" id="nationalID" placeholder="Enter National ID" required>
+        </div>
+        <div class="input-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Enter Full Name" required>
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter Email" required>
+        </div>
+        <div class="input-group">
+          <label for="title">Title</label>
+          <select id="title" required>
+            <option value="">Select</option>
+            <option value="Doctor">Dr</option>
+            <option value="Nurse">Nurse</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter password" required>
+        </div>
+        <div class="input-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+        </div>
+        <button type="submit">Register</button>
+      </form>
+      <p class="redirect">Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+  </div>
+
+  <script type="module" src="register.js"></script>
+
+</body>
+</html>

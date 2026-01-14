@@ -1,0 +1,134 @@
+:root{
+  --bg:#eef0f3;
+  --card:#ffffff;
+  --muted:#9aa1ab;
+  --accent:#0ea5a4;
+  --accent-2:#2563eb;
+  --danger:#ef4444;
+  --glass: rgba(255,255,255,0.6);
+  --shadow: 0 8px 24px rgba(22,28,37,0.08);
+  --radius:14px;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    background: #f4f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.topbar {
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+
+}
+
+.topbar .logo {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px
+
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 60px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 90px 100px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-card h2 {
+    color: #0f766e;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.login-card p.subtitle {
+    font-size: 14px;
+    color: #6c8181;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.input-group {
+    width: 100%;
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #0b3d3a;
+    margin-bottom: 6px;
+}
+
+.input-group input {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1.5px solid #dce7e7;
+    font-size: 14px;
+    transition: 0.2s;
+    background: #f9fefc;
+    color: #0b3d3a;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #0f766e;
+    background: #ffffff;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s ease;
+}
+
+.login-btn:hover {
+    background: #0d5e28;
+}
+
+#errorMsg {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #dc2626;
+    text-align: center;
+}
+@media screen and (max-width: 420px) {
+    .login-card {
+        padding: 30px 20px;
+    }
+}

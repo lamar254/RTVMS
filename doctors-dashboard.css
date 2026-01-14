@@ -1,0 +1,317 @@
+:root{
+  --bg:#eef0f3;
+  --card:#ffffff;
+  --muted:#9aa1ab;
+  --accent:#0ea5a4;
+  --accent-2:#2563eb;
+  --danger:#ef4444;
+  --glass: rgba(255,255,255,0.6);
+  --shadow: 0 8px 24px rgba(22,28,37,0.08);
+  --radius:14px;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+*{box-sizing:border-box}
+html,body{height:100%;
+  margin:0;
+  background:linear-gradient(180deg,var(--bg),#f6f7f9);
+  color:#0f1724}
+
+.wrap{display:grid;
+  grid-template-columns:320px 1fr 420px;
+  gap:20px;
+  padding:26px;
+  max-width:1400px;
+  margin:20px auto}
+
+.sidebar{background:var(--card);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  gap:12px}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-bottom: 14px;
+}
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.topbar-left .logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: white;
+  color: var(--accent-2);
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+.hospital-name {
+  font-weight: 600;
+  font-size: 16px;
+}
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.topbar-right #userName {
+  font-weight: 600;
+}
+.topbar-right .btn {
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+
+.brand{display:flex;
+  align-items:center;
+  gap:12px}
+
+.logo{width:44px;
+  height:44px;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-weight:700}
+
+.title{font-weight:700;
+  font-size:16px}
+
+.search{margin-top:6px}
+
+.search input{width:100%;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #e6e9ee;
+  background:transparent}
+
+.patients{margin-top:10px;
+  overflow:auto;
+  max-height:62vh}
+
+.patient{display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px;
+  border-radius:10px;
+  cursor:pointer}
+
+.patient:hover{
+  background:#f6f9fb}
+
+.patient.active{
+  background:linear-gradient(90deg, rgba(14,165,164,0.08), rgba(37,99,235,0.04));
+  border-left:4px solid var(--accent);
+  padding-left:6px}
+
+.avatar{
+  width:44px;
+  height:44px;
+  border-radius:8px;
+  background:linear-gradient(180deg,#fff,#f2f7f7);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+  color:#0f1724}
+
+.meta{
+  flex:1}
+
+.meta h4{
+  margin:0;
+  font-size:14px}
+
+.meta p{
+  margin:2px 0 0 0;
+  font-size:12px;
+  color:var(--muted)}
+
+.main{
+  background:linear-gradient(180deg,var(--card),#fbfdff);
+  border-radius:var(--radius);
+  padding:20px;
+  box-shadow:var(--shadow);
+  display:flex;flex-direction:column;
+  gap:14px}
+
+.toprow{
+  display:flex;
+  justify-content:space-between;
+  align-items:center}
+
+.patient-info{
+  display:flex;
+  gap:14px;
+  align-items:center}
+
+.patient-card{
+  background:var(--glass);
+  padding:10px;
+  border-radius:12px;
+  display:flex;
+  gap:12px;
+  align-items:center}
+
+.patient-card h2{
+  margin:0;
+  font-size:18px}
+
+.controls{
+  display:flex;
+  gap:10px;
+  align-items:center}
+
+.btn{
+  padding:8px 12px;
+  border-radius:10px;
+  background:linear-gradient(0deg,var(--accent),var(--accent-2));
+  color:white;
+  border:none;
+  cursor:pointer;
+  font-weight:600}
+
+.btn.ghost{
+  background:transparent;
+  color:var(--accent);
+  border:1px solid rgba(14,165,164,0.12)}
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  gap:14px}
+
+.card{
+  background:var(--card);
+  border-radius:12px;
+  padding:12px;
+  box-shadow:0 6px 18px rgba(12,18,24,0.04);
+  min-height:120px}
+
+.wave-card{
+  grid-column:1/4;
+  display:flex;
+  gap:14px;
+  align-items:center}
+
+.wave-canvas{
+  flex:1;
+  height:120px;
+  background:linear-gradient(90deg,#fbfdff,#f7fbff);
+  border-radius:10px;
+  padding:6px}
+
+.mini-stats{
+  width:260px;
+  background:linear-gradient(180deg,#fff,#fbfdff);
+  border-radius:10px;
+  padding:12px}
+
+.metric{
+  display:flex;justify-content:space-between;
+  align-items:center;
+  padding:6px 0;
+  border-bottom:1px dashed #f0f3f6}
+
+.comments{
+  display:flex;
+  flex-direction:column;
+  gap:8px}
+
+.note{
+  background:#f6f9fb;
+  padding:10px;
+  border-radius:10px}
+
+.right{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  gap:12px}
+
+.section{
+  background:linear-gradient(180deg,#fff,#fbfdff);
+  border-radius:12px;
+  padding:12px}
+
+.record-row{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  border-bottom:1px dashed #f0f3f6}
+
+@media(max-width:1100px){
+  .wrap{grid-template-columns:1fr;
+    padding:12px}
+    .wave-card{grid-column:1/2;
+      flex-direction:column}
+
+.grid{grid-template-columns:1fr}.right{order:3}}
+.alerting{animation: pulse 1s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,0.18)}50%{box-shadow:0 0 0 12px rgba(239,68,68,0.02)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+
+/* Alert Legend Card */
+.alert-legend-card {
+  margin-top: 12px;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.legend-item-small {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.legend-color-small {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.discharge-btn {
+  display: inline-block;
+  padding: 12px 15px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: 0.2s;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.discharge-btn:hover {
+  background: rgb(7, 63, 21);
+}

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>New Patient</title>
+  <link rel="stylesheet" href="nurse-dashboard.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    .wrap {
+      grid-template-columns: 1fr 420px;
+      gap: 30px;
+    }
+    .main {
+      padding: 40px;
+    }
+    .form-row {
+      margin-bottom: 25px;
+      gap: 20px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #e6e9ee;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    .admit-card h3 {
+      margin-top: 50px;
+      margin-bottom: 25px;
+      font-size: 18px;
+      color: var(--accent);
+    }
+    .btn-submit {
+      margin-top: 40px;
+      padding: 14px 24px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+    }
+    .btn-submit:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="logo"></div>
+      <span class="hospital-name">RTVMS</span>
+    </div>
+    <div class="topbar-right">
+      <span id="userName">Nurse Joy</span>
+      <button class="btn ghost" id="logoutBtn">Logout</button>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <main class="main">
+      <div class="toprow">
+        <div class="patient-info">
+          <div class="patient-card">
+            <div style="width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;background:linear-gradient(180deg,#fff,#f2f7f7);">N</div>
+            <div>
+              <h2>New Patient Admission</h2>
+              <div style="font-size:13px;color:var(--muted)">Complete the form to add patient details</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <div class="admit-card">
+          <h2>Patient Information</h2>
+          <p style="color:var(--muted);margin-bottom:20px;">Fill in the details below to add a new patient to the system.</p>
+
+          <form id="admitPatientForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="patientName" required>
+              </div>
+              <div class="form-group">
+                <label>Age</label>
+                <input type="number" id="patientAge" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Ward / Bed Number</label>
+                <input type="text" id="patientBed" required>
+              </div>
+              <div class="form-group">
+                <label>Admission Date</label>
+                <input type="date" id="admissionDate" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Diagnosis / Condition</label>
+              <textarea id="patientCondition" required></textarea>
+            </div>
+
+            <h3 style="margin-top:30px;">Initial Vitals Configuration (Simulation)</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Heart Rate (BPM)</label>
+                <input type="number" id="initialHR" placeholder="e.g. 78">
+              </div>
+              <div class="form-group">
+                <label>Blood Pressure (Systolic)</label>
+                <input type="number" id="initialBP1" placeholder="e.g. 120">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Blood Pressure (Diastolic)</label>
+                <input type="number" id="initialBP2" placeholder="e.g. 80">
+              </div>
+              <div class="form-group">
+                <label>Oxygen Level (%)</label>
+                <input type="number" id="initialOxygen" placeholder="e.g. 97">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Temperature (°C)</label>
+                <input type="number" step="0.1" id="initialTemp" placeholder="e.g. 36.5">
+              </div>
+              <div class="form-group">
+                <label>Respiratory Rate (rpm)</label>
+                <input type="number" id="initialRR" placeholder="e.g. 16">
+              </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Save Patient</button>
+          </form>
+
+          <p id="admissionStatus" class="status-msg"></p>
+        </div>
+      </div>
+    </main>
+
+    <aside class="right">
+      <div class="section">
+        <strong>Admission Guidelines</strong>
+        <ul style="margin-top:10px;padding-left:20px;font-size:14px;color:var(--muted);line-height:1.5;">
+          <li>Ensure all required fields are filled accurately.</li>
+          <li>Use the patient's full legal name.</li>
+          <li>Specify the exact ward and bed number.</li>
+          <li>Provide detailed diagnosis for proper care.</li>
+          <li>Set realistic initial vitals for simulation.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <strong>Quick Tips</strong>
+        <div style="margin-top:10px;font-size:14px;color:var(--muted);line-height:1.5;">
+          <p>• Double-check patient information before saving.</p>
+          <p>• Initial vitals can be adjusted later in the dashboard.</p>
+          <p>• Contact admin for any admission issues.</p>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script type="module" src="new-patient.js"></script>
+</body>
+</html>

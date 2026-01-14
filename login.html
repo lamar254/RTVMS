@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+    <div class="topbar">
+        <div class="logo">RTVMS</div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-card">
+            <h2>STAFF LOGIN</h2>
+            <p class="subtitle">Enter your Work ID and Password</p>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="workId">Work ID</label>
+                    <input type="text" id="workId" placeholder="e.g. NRS12345 / DR45678" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter password" required />
+                </div>
+
+                <button type="submit" class="login-btn">Login</button>
+                <p id="errorMsg" class="error"></p>
+            </form>
+        </div>
+    </div>
+
+<script type="module" src="firebase-config.js"></script>
+<script type="module" src="login.js"></script>
+
+</body>
+</html>

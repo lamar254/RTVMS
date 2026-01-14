@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; connect-src 'self' https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://www.gstatic.com https://fonts.googleapis.com https://fonts.gstatic.com;">
+  <title>Platinum — Doctor Dashboard (RT Vitals)</title>
+  <link rel="stylesheet" href="doctors-dashboard.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head>
+<body>
+       <header class="topbar">
+    <div class="topbar-left">
+      <div class="logo"></div>
+      <span class="hospital-name">RTVMS</span>
+    </div>
+    <div class="topbar-right">
+      <span id="userName">Dr. Smith</span>
+      <button class="btn ghost" id="logoutBtn">Logout</button>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">PH</div>
+        <div><div class="title">RTVMS — Doctor</div><div style="font-size:12px;color:var(--muted)">Realtime vitals & management</div></div>
+      </div>
+
+      <div class="search"><input id="search" placeholder="Search patient..." /></div>
+      <div class="patients" id="patientList" role="list"></div>
+      <div><button class="discharge-btn" id="dischargeBtn">Discharge Patient</button></div>
+    </aside>
+
+    <main class="main">
+      <div class="toprow">
+        <div class="patient-info">
+          <div class="patient-card" id="selectedPatientCard">
+            <div style="width:52px;height:52px;border-radius:10px;
+            background:linear-gradient(180deg,#fff,#f2f7f7);
+            display:flex;align-items:center;
+            justify-content:center;font-weight:700;
+            font-size:18px" id="patAvatar">A</div>
+            <div>
+              <h2 id="patName">Select a patient</h2>
+              <div style="font-size:13px;color:var(--muted)" id="patMeta">Ward — Bed</div>
+            </div>
+          </div>
+        </div>
+         <div class="controls">
+          <button class="btn" id="muteBtn">Mute Alerts</button>
+          <button class="btn" id="downloadBtn">Download Patient Data</button>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Heart Rate</h3>
+          <div class="stat" id="stat-hr">— bpm</div>
+        </div>
+        <div class="card">
+          <h3>SpO₂</h3>
+          <div class="stat" id="stat-spo2">— %</div>
+        </div>
+        <div class="card">
+          <h3>Temp</h3>
+          <div class="stat" id="stat-temp">— °C</div>
+        </div>
+
+        <div class="wave-card card">
+          <div class="wave-canvas">
+            <canvas id="waveform" width="900" height="120" style="width:100%;height:100%;display:block;border-radius:8px"></canvas>
+          </div>
+          <div class="mini-stats">
+            <div style="font-weight:700">Vitals Snapshot</div>
+            <div class="metric"><div>BP</div><div id="stat-bp">— / —</div></div>
+            <div class="metric"><div>Resp Rate</div><div id="stat-rr">—</div></div>
+            <div class="metric"><div>Last Update</div><div id="stat-last">—</div></div>
+          </div>
+        </div>
+
+        <div class="card" style="grid-column:1/2">
+          <h3>Patient Records</h3>
+          <div id="recordsList" style="margin-top:8px;max-height:200px;overflow:auto"></div>
+        </div>
+
+        <div class="card" style="grid-column:2/4">
+          <h3>Comments (nurses)</h3>
+          <button class="btn ghost" id="clearCommentsBtn" style="float:right;margin-bottom:10px">Clear Comments</button>
+          <div class="comments" id="commentsArea" style="max-height:200px;overflow:auto;margin-top:10px;clear:both"></div>
+        </div>
+      </div>
+    </main>
+
+    <aside class="right">
+      <div class="section">
+        <div style="display:flex;justify-content:space-between;align-items:center"><strong>Active Alerts</strong><small style="color:var(--muted)">Auto-clear on</small></div>
+        <div id="alertsList" style="margin-top:10px;min-height:60px"></div>
+      </div>
+
+      <div class="section alert-legend-card">
+        <div style="font-weight:600;font-size:14px;margin-bottom:8px">Alert Colors</div>
+        <div class="legend-grid">
+          <div class="legend-item-small">
+            <div class="legend-color-small" style="background: linear-gradient(90deg,#ffcccc,#ffdddd); border: 1px solid #ff0000;"></div>
+            <span>Critical</span>
+          </div>
+          <div class="legend-item-small">
+            <div class="legend-color-small" style="background: linear-gradient(90deg,#ffecec,#fff4f4); border: 1px solid #f44336;"></div>
+            <span>High</span>
+          </div>
+          <div class="legend-item-small">
+            <div class="legend-color-small" style="background: linear-gradient(90deg,#fff8e6,#fff9e6); border: 1px solid #ff9800;"></div>
+            <span>Moderate</span>
+          </div>
+          <div class="legend-item-small">
+            <div class="legend-color-small" style="background: linear-gradient(90deg,#e8f5e8,#f1f8e9); border: 1px solid #4caf50;"></div>
+            <span>Normal</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <audio id="alertAudio" src="Alertsound.mp3"preload="auto"></audio>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="doctor-dashboard.js"></script>
+
+</body>
+</html>
